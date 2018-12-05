@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Platform.Main.Views.Aoi.ProjectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Platform.Main.Views.Aoi"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="200">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resource/ToolBarImages.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <DockPanel>
+            <ToolBar DockPanel.Dock="Top" x:Name="ImageViewToolBar" Height="24" Background="Transparent">
+                <Separator />
+                <Button Height="24" Width="24"  Content="{StaticResource AppbarFolderOpen}" Command="{Binding ImportImageCommand}"/>
+                <Button Height="24" Width="24"  Content="{StaticResource AppbarSave}" Command="{Binding ImportImageCommand}"/>
+            </ToolBar>
+            <DataGrid ItemsSource="{Binding OpcPluginViewModel.Points}" AutoGenerateColumns="False" CanUserDeleteRows="True" CanUserAddRows="False" >
+                <DataGrid.Columns>
+                    <mui:DataGridTextColumn Header="序号"  Binding="{Binding Name}" IsReadOnly="True"/>
+                    <mui:DataGridTextColumn Header="图片路径" Binding="{Binding OpcChannel}" IsReadOnly="True" />
+                    <mui:DataGridTextColumn Header="模板路径" Binding="{Binding OpcChannel}" IsReadOnly="True" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+        
+    </Grid>
+</UserControl>
